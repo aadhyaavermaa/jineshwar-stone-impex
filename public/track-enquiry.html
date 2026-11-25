@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Track an enquiry | Jineshwar Stone Impex</title>
+    <meta
+      name="description"
+      content="Track an enquiry at Jineshwar Stone Impex. Explore natural stone, architectural furniture and marble handicrafts."
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <link rel="stylesheet" href="/css/customer.css" />
+    <script defer src="/js/main.js"></script>
+    <script defer src="/js/enquiries.js"></script>
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main id="main" tabindex="-1">
+      <div class="page-head">
+        <div class="wrap">
+          <div class="eyebrow">Enquiry desk</div>
+          <h1>Track your enquiry</h1>
+          <p id="tracking-intro" class="intro" role="status">Checking your account session…</p>
+        </div>
+      </div>
+      <section class="section wrap">
+        <form id="tracking" class="formbox account-form" hidden>
+          <label for="tracking-reference">Enquiry reference number</label>
+          <input id="tracking-reference" name="reference_number" required maxlength="100" />
+          <div id="tracking-guest" class="account-form" hidden>
+            <label for="tracking-code">Private tracking code</label>
+            <div class="password-field">
+              <input id="tracking-code" type="password" name="tracking_code" maxlength="100" autocomplete="off" disabled />
+              <button class="password-toggle" id="tracking-toggle" type="button"
+                aria-controls="tracking-code" aria-label="Show private tracking code">Show</button>
+            </div>
+            <p><a class="account-textlink" href="/login.html?returnTo=%2Ftrack-enquiry.html">Sign in to track an account request</a></p>
+          </div>
+          <div class="actions">
+            <button class="btn" type="submit">Track Request</button>
+            <a class="outline" id="tracking-dashboard" href="/dashboard.html?section=enquiries" hidden>View All My Requests</a>
+          </div>
+        </form>
+        <div id="response" aria-live="polite"></div>
+      </section>
+    </main>
+    <footer class="foot" id="site-footer"></footer>
+  </body>
+</html>

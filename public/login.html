@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Welcome back | Jineshwar Stone Impex</title>
+    <meta
+      name="description"
+      content="Sign in to see your projects, quotations and messages from the studio."
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <link rel="stylesheet" href="/css/customer.css" />
+    <script defer src="/js/main.js"></script>
+    <script defer src="/js/customer-common.js"></script>
+    <script defer src="/js/customer-login.js"></script>
+  </head>
+  <body class="auth-screen">
+    <div id="site-header"></div>
+    <main id="main" tabindex="-1" class="auth-page">
+      <div class="auth-panel">
+        <figure class="auth-art">
+          <img src="/images/interior.webp" alt="Illustrative architectural stone interior" />
+          <figcaption><span>Jineshwar</span> Stone Impex</figcaption>
+        </figure>
+        <section class="auth-copy" aria-labelledby="auth-title">
+          <div class="eyebrow">Customer account</div>
+          <h1 id="auth-title">Welcome back</h1>
+          <p>Sign in to see your projects, quotations and messages from the studio.</p>
+          <form id="customer-auth" class="account-form" data-mode="login">
+            <div class="auth-field">
+              <label for="email">Email address</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                maxlength="254"
+                autocomplete="email"
+              />
+            </div>
+            <div class="auth-field">
+              <label for="password">Password</label>
+              <div class="password-field">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autocomplete="current-password"
+                  minlength="1"
+                  required
+                />
+                <button
+                  type="button"
+                  class="password-toggle"
+                  aria-controls="password"
+                  aria-label="Show password"
+                >
+                  Show
+                </button>
+              </div>
+            </div>
+            <p class="account-feedback" role="status" id="auth-feedback"></p>
+            <button class="btn" type="submit" id="auth-submit" disabled>Sign in</button>
+          </form>
+          <div id="google-area" hidden>
+            <div class="or-rule"><span>or</span></div>
+            <div id="google-button"></div>
+          </div>
+          <p class="auth-switch">
+            New to the studio? <a id="auth-switch" href="/signup.html">Create an account</a>
+          </p>
+        </section>
+      </div>
+    </main>
+    <footer id="site-footer" class="foot"></footer>
+  </body>
+</html>

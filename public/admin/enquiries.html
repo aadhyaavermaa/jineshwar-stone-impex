@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Review project requests, prepare quotations and keep the conversation in one place."
+    />
+    <title>Enquiry desk | Jineshwar Stone Impex</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <link rel="stylesheet" href="/css/admin.css" />
+    <script defer src="/js/main.js"></script>
+    <script defer src="/js/admin-crm.js"></script>
+    <script defer src="/js/admin-quotation.js"></script>
+    <script defer src="/js/admin.js"></script>
+  </head>
+  <body class="staff">
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="admin-layout">
+      <aside class="sidebar">
+        <div class="rail-head">
+          <a href="/" class="studio-name" aria-label="Jineshwar Stone Impex home"
+            >Jineshwar <i>Stone Impex</i></a
+          >
+          <button
+            type="button"
+            class="rail-toggle ghost"
+            aria-controls="staff-navigation"
+            aria-expanded="false"
+          >
+            Menu
+          </button>
+        </div>
+        <nav id="staff-navigation" aria-label="Staff navigation">
+          <a href="/admin/dashboard.html">Overview</a>
+          <a href="/admin/products.html">Products</a>
+          <a href="/admin/customers.html">Customers</a>
+          <a href="/admin/enquiries.html">All enquiries</a>
+          <a href="/admin/enquiries.html?type=quotation">Quotations</a>
+          <a href="/admin/enquiries.html?type=consultancy">Consultations</a>
+          <a href="/admin/enquiries.html?type=sample_request">Stone samples</a>
+          <a href="/admin/enquiries.html?type=contact">Contact messages</a>
+          <button id="logout" class="ghost">Sign out</button>
+        </nav>
+      </aside>
+      <main id="main" class="admin-main" tabindex="-1">
+        <div class="eyebrow">Studio administration</div>
+        <h1>Enquiry desk</h1>
+        <p class="desk-intro">
+          Review project requests, prepare quotations and keep the conversation in one place.
+        </p>
+        <p id="feedback" aria-live="polite"></p>
+        <div id="workspace"><div class="skeleton" aria-label="Loading workspace"></div></div>
+      </main>
+    </div>
+  </body>
+</html>

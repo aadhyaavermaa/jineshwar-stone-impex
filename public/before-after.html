@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Before &amp; after | Jineshwar Stone Impex</title>
+    <meta
+      name="description"
+      content="Move the divider to compare the original surface with the same room finished in stone."
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <link rel="stylesheet" href="/css/studio.css" />
+    <script defer src="/js/main.js"></script>
+    <script defer src="/js/studio.js"></script>
+    <script defer src="/js/rooms.js"></script>
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main id="main" tabindex="-1">
+      <header class="page-head studio-head">
+        <div class="wrap">
+          <div class="eyebrow">Design studio</div>
+          <h1>Before &amp; after</h1>
+          <p class="intro">
+            Move the divider to compare the original surface with the same room
+            finished in stone.
+          </p>
+        </div>
+      </header>
+      <section class="wrap section studio-work">
+        <div class="studio-layout">
+          <figure class="studio-figure">
+            <div class="studio-compare">
+              <img
+                src="/images/rooms/living.webp"
+                id="before"
+                alt="Room with its original surface"
+              /><img
+                src="/images/rooms/living.webp"
+                id="after"
+                alt="Same room with the selected stone"
+              /><span class="stage-label left">Before</span
+              ><span class="stage-label right">After</span
+              ><i class="slider-line" aria-hidden="true"></i
+              ><input
+                aria-label="Before and after divider"
+                id="divider"
+                type="range"
+                min="0"
+                max="100"
+                value="50"
+              />
+            </div>
+            <figcaption>
+              Illustrative transformation. Drag the handle or use the arrow keys
+              to reveal each finish.
+            </figcaption>
+          </figure>
+          <aside class="studio-panel">
+            <label>Room study<select id="room"></select></label>
+            <h2>Applied material</h2>
+            <div class="studio-swatches" id="textures"></div>
+            <div id="material-info"></div>
+          </aside>
+        </div>
+        <p role="status" id="studio-status">Loading the catalogue…</p>
+      </section>
+    </main>
+    <footer class="foot" id="site-footer"></footer>
+  </body>
+</html>

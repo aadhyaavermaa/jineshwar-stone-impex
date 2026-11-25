@@ -1,0 +1,29 @@
+.guide-banner { display:grid; grid-template-columns:minmax(0, 1.1fr) minmax(0, .9fr); gap:clamp(1.75rem,5vw,5rem); align-items:center; padding-block:clamp(2rem,5vw,5rem); }
+.guide-banner h1 { font-size:clamp(3rem,6.5vw,6.8rem); line-height:.99; margin:.35em 0; }
+.guide-banner > img { width:100%; height:clamp(12rem,22vw,19rem); object-fit:cover; }
+.guide-section { padding-block:1rem clamp(4rem,7vw,7rem); }
+.guide-section h2 { font-size:clamp(2rem,4vw,3.5rem); }
+.guide-section [hidden] { display:none !important; }
+.quiz-fields { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.5rem; margin:1.5rem 0; }
+.quiz-fields label, .care-label { display:grid; gap:.45rem; font-size:.95rem; }
+.quiz-fields select, .care-label select { width:100%; min-height:46px; padding:.6rem; background:white; color:#1c1c1c; border:1px solid #aba895; font:inherit; }
+.quiz-products { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.4rem; padding-block:1.25rem; }
+.quiz-match { display:flex; flex-direction:column; }
+.quiz-reasons { border-top:2px solid #9b865e; margin:0; padding:1rem 0; }
+.quiz-match .card { flex:1; }
+.quiz-followup { padding:1.4rem; background:#e8dfd2; margin:1.5rem 0; }
+.quiz-followup h3, .quiz-followup ul { margin:0 0 .8rem; }
+.quiz-followup ul { padding-left:1.25rem; }
+.guide-result-head { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+.care-label { max-width:27rem; }
+.care-articles { display:grid; grid-template-columns:minmax(0,.65fr) minmax(0,1fr); gap:clamp(1.6rem,6vw,6rem); padding:2.5rem 0; }
+.care-articles h2 { margin:0 0 .5rem; }
+.care-articles details { border-top:1px solid #b1aa9b; }
+.care-articles details:last-child { border-bottom:1px solid #b1aa9b; }
+.care-articles summary { cursor:pointer; list-style:none; position:relative; padding:1rem 2.5rem 1rem 0; }
+.care-articles summary::-webkit-details-marker { display:none; }
+.care-articles summary::after { content:""; position:absolute; right:.5rem; top:1rem; width:1.25rem; height:1.25rem; background:center / contain no-repeat url(/icons/chevron-right.svg); }
+.care-articles details[open] summary::after { transform:rotate(90deg); }
+.care-articles details p { margin:0 0 1.2rem; }
+@media(max-width:900px) { .quiz-fields,.quiz-products { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:650px) { .guide-banner,.care-articles,.quiz-fields,.quiz-products { grid-template-columns:minmax(0,1fr); } .guide-banner > img { height:12rem; } }

@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Stone calculator | Jineshwar Stone Impex</title>
+    <meta
+      name="description"
+      content="Plan the area, tile count or slab quantity for a stone project and save your material estimate."
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <link rel="stylesheet" href="/css/calculator.css" />
+    <script defer src="/js/main.js"></script>
+    <script defer src="/js/stone-math.js"></script>
+    <script defer src="/js/calculator.js"></script>
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main id="main" tabindex="-1">
+      <header class="wrap planner-heading">
+        <span class="eyebrow">Design studio</span>
+        <h1>Stone calculator</h1>
+        <p class="intro">Measure a surface, allow for cuts and plan the material for your room.</p>
+      </header>
+      <div class="wrap planner-layout">
+        <form class="planner-form" id="calc">
+          <fieldset class="planner-mode">
+            <legend>Calculation mode</legend>
+            <div class="planner-tabs">
+              <label
+                ><input type="radio" name="mode" value="surface" checked /><span
+                  >Surface area</span
+                ></label
+              >
+              <label
+                ><input type="radio" name="mode" value="tile" /><span>Tile quantity</span></label
+              >
+              <label
+                ><input type="radio" name="mode" value="slab" /><span>Slab quantity</span></label
+              >
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Surface measurements</legend>
+            <div class="planner-grid">
+              <label
+                >Enter the surface as<select name="source">
+                  <option value="dimensions">Room dimensions</option>
+                  <option value="area">Known area</option>
+                </select></label
+              >
+              <label
+                ><span id="area-label">Result &amp; rate unit</span
+                ><select name="areaUnit">
+                  <option value="sq ft">Square feet</option>
+                  <option value="sq m">Square metres</option>
+                </select></label
+              >
+            </div>
+            <div class="planner-grid planner-trio" data-group="dimensions">
+              <label
+                >Length<input
+                  name="length"
+                  type="number"
+                  required
+                  min=".0001"
+                  max="100000"
+                  step="any"
+                  inputmode="decimal"
+                  placeholder="e.g. 12"
+              /></label>
+              <label
+                >Width / wall height<input
+                  name="width"
+                  type="number"
+                  required
+                  min=".0001"
+                  max="100000"
+                  step="any"
+                  inputmode="decimal"
+                  placeholder="e.g. 10"
+              /></label>
+              <label
+                >Length unit<select name="unit">
+                  <option value="feet">Feet</option>
+                  <option value="metres">Metres</option>
+                  <option value="inches">Inches</option>
+                  <option value="centimetres">Centimetres</option>
+                </select></label
+              >
+            </div>
+            <div class="planner-grid" data-group="area" hidden>
+              <label
+                ><span id="known-area-label">Surface area (sq ft)</span
+                ><input
+                  name="area"
+                  type="number"
+                  min=".000001"
+                  max="1000000000"
+                  step="any"
+                  inputmode="decimal"
+                  required
+                  disabled
+              /></label>
+            </div>
+          </fieldset>
+          <fieldset data-group="piece" hidden>
+            <legend id="piece-legend">Piece dimensions</legend>
+            <div class="planner-grid planner-trio">
+              <label
+                ><span id="piece-length">Piece length</span
+                ><input
+                  type="number"
+                  name="pieceLength"
+                  min=".0001"
+                  max="100000"
+                  step="any"
+                  inputmode="decimal"
+                  required
+                  disabled
+              /></label>
+              <label
+                ><span id="piece-width">Piece width</span
+                ><input
+                  type="number"
+                  name="pieceWidth"
+                  min=".0001"
+                  max="100000"
+                  step="any"
+                  inputmode="decimal"
+                  required
+                  disabled
+              /></label>
+              <label
+                >Piece unit<select name="pieceUnit" disabled>
+                  <option value="centimetres">Centimetres</option>
+                  <option value="inches">Inches</option>
+                  <option value="feet">Feet</option>
+                  <option value="metres">Metres</option>
+                </select></label
+              >
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Material &amp; allowance</legend>
+            <div class="planner-grid">
+              <label class="planner-wide"
+                >Selected product<select name="product">
+                  <option value="">Material undecided</option>
+                </select></label
+              >
+              <label
+                >Wastage (%)<input
+                  type="number"
+                  name="waste"
+                  required
+                  min="0"
+                  max="100"
+                  step="any"
+                  value="10"
+                  inputmode="decimal"
+              /></label>
+              <label
+                ><span id="rate-label">Rate per sq ft (₹, optional)</span
+                ><input
+                  type="number"
+                  name="rate"
+                  min="0"
+                  max="100000000"
+                  step="any"
+                  inputmode="decimal"
+              /></label>
+            </div>
+          </fieldset>
+          <div class="planner-buttons">
+            <button type="submit" class="btn" id="calculate">Calculate estimate</button
+            ><button type="reset" class="outline">Reset calculator</button>
+          </div>
+        </form>
+        <aside class="planner-summary" aria-labelledby="estimate-title">
+          <div class="planner-paper">
+            <span class="eyebrow">Planning estimate</span>
+            <h2 id="estimate-title">Material requirement</h2>
+            <p class="print-only" id="print-brand">Jineshwar Stone Impex</p>
+            <div id="estimate" role="status" aria-live="polite"></div>
+            <div class="planner-buttons" id="result-actions" hidden>
+              <a class="btn" id="to-quote">Use in quotation request</a>
+              <button class="outline" type="button" id="print-estimate">Print estimate</button>
+            </div>
+            <p class="planner-note">
+              An area-based estimate for planning. Cutting patterns, joints, slab defects, vein
+              matching and installation conditions can change the final quantity. The studio
+              confirms quantities and pricing in its official quotation.
+            </p>
+          </div>
+          <form class="planner-save" id="save-project">
+            <h3>Save as project</h3>
+            <label
+              >Project name<input
+                name="project_name"
+                required
+                maxlength="100"
+                placeholder="e.g. Living room floor"
+            /></label>
+            <button type="submit" class="outline" id="save-button">Save project</button>
+            <span role="status" id="save-status"></span>
+          </form>
+        </aside>
+      </div>
+    </main>
+    <footer class="foot" id="site-footer"></footer>
+  </body>
+</html>

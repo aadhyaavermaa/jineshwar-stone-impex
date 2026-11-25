@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Find Your Perfect Stone | Jineshwar Stone Impex</title>
+  <meta name="description" content="Shortlist catalogue materials by application, colour and finish, and plan the questions to ask the studio.">
+  <link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/responsive.css"><link rel="stylesheet" href="/css/material-guides.css">
+  <script defer src="/js/main.js"></script><script defer src="/js/quiz.js"></script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main id="main" tabindex="-1">
+    <header class="guide-banner wrap">
+      <div><p class="eyebrow">Design studio</p><h1>Find Your Perfect Stone</h1>
+      <p class="intro">Start with the space you have in mind. Build a shortlist from the current collection and see what to confirm with the studio.</p></div>
+      <img src="/images/onyx.webp" alt="An illustrative study of green onyx veining">
+    </header>
+    <div class="wrap guide-section">
+      <form id="stone-quiz" hidden>
+        <h2>What are you planning?</h2>
+        <div class="quiz-fields">
+          <label>Intended application<select name="application"><option value="">Explore all applications</option></select></label>
+          <label>Preferred colour<select name="colour"><option value="">Open to any colour</option></select></label>
+          <label>Preferred aesthetic<select name="finish"><option value="">Open to any finish</option></select></label>
+          <label>Budget preference<select name="budget"><option value="open">Still exploring</option><option value="limit">Keep within a fixed budget</option><option value="compare">Compare quotes for different finishes</option></select></label>
+          <label>Durability requirement<select name="durability"><option value="ordinary">Everyday use</option><option value="heavy">High traffic or frequent handling</option><option value="wet">Frequent exposure to moisture</option></select></label>
+          <label>Maintenance preference<select name="maintenance"><option value="standard">Comfortable with regular stone care</option><option value="low">Prefer a simpler care routine</option><option value="specialist">Open to specialist care</option></select></label>
+        </div>
+        <button class="btn" type="submit">Find my matches</button>
+      </form>
+      <p id="quiz-loading" role="status">Loading the current collection…</p>
+      <section id="quiz-results" hidden aria-labelledby="shortlist-title">
+        <div class="guide-result-head"><h2 id="shortlist-title" tabindex="-1">Your shortlist</h2><button type="button" class="outline" id="retake">Retake quiz</button></div>
+        <p id="quiz-summary"></p>
+        <div class="quiz-products" id="quiz-products"></div>
+        <aside class="quiz-followup"><h3>Questions for the studio</h3><ul id="followup-questions"></ul><a class="textlink" href="/consultancy.html">Request a consultation</a></aside>
+      </section>
+    </div>
+  </main>
+  <footer class="foot" id="site-footer"></footer>
+</body></html>

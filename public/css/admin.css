@@ -1,0 +1,497 @@
+.login-panel {
+  max-width: 460px;
+  margin: 10vh auto;
+  padding: 2rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+.login-panel h1,
+.admin-main h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+.login-panel p {
+  margin: 1rem 0;
+}
+.admin-layout {
+  display: grid;
+  grid-template-columns: 235px minmax(0, 1fr);
+  min-height: 100vh;
+}
+.sidebar {
+  background: #333d30;
+  color: white;
+  padding: 2rem 1.4rem;
+}
+.studio-name {
+  font: 2rem var(--serif);
+}
+.studio-name i {
+  color: var(--gold);
+}
+.sidebar nav {
+  margin-top: 2rem;
+  display: grid;
+  gap: 0.5rem;
+}
+.sidebar nav a {
+  padding: 0.5rem;
+}
+.admin-main {
+  padding: clamp(1rem, 4vw, 4rem);
+  min-width: 0;
+}
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+.metric {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 1rem;
+}
+.metric strong {
+  display: block;
+  font: 2.6rem var(--serif);
+}
+.chart-frame {
+  position: relative;
+  height: 245px;
+}
+.admin-main section {
+  margin: 1.5rem 0;
+}
+.admin-main dialog {
+  width: min(760px, 94vw);
+}
+.admin-main h2 {
+  font-size: 2.3rem;
+}
+.admin-main td {
+  overflow-wrap: anywhere;
+}
+.checklabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.checklabel input {
+  width: 18px;
+  min-height: 18px;
+}
+.admin-main .tools {
+  margin-bottom: 1rem;
+}
+.admin-main table button {
+  white-space: nowrap;
+}
+.admin-main .scrollbox {
+  max-width: 100%;
+}
+#feedback {
+  color: #833d27;
+}
+.sidebar a[aria-current="page"] {
+  background: #525d49;
+}
+@media (max-width: 800px) {
+  .admin-layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    padding: 1rem;
+  }
+  .sidebar nav {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+    align-items: center;
+    font-size: 0.85rem;
+  }
+  .studio-name br {
+    display: none;
+  }
+  .studio-name {
+    font-size: 1.5rem;
+  }
+  .metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .admin-main {
+    padding: 1rem;
+  }
+  .admin-main h1 {
+    font-size: 2.6rem;
+  }
+}
+
+/* Staff workspace */
+.staff {
+  --staff-green: #29382e;
+  --staff-gold: #b49a70;
+}
+.staff .sidebar {
+  background: var(--staff-green);
+  padding: 2.15rem 1.25rem;
+}
+.staff .studio-name {
+  display: block;
+  color: #faf7ee;
+  line-height: 0.96;
+  font-size: 2.25rem;
+}
+.staff .studio-name i {
+  display: block;
+  color: #e6d2ad;
+  font-size: 0.82em;
+}
+.staff .rail-head {
+  padding: 0.25rem 0.65rem 1.6rem;
+  border-bottom: 1px solid #667366;
+}
+.staff .sidebar nav {
+  gap: 0.2rem;
+  margin-top: 1.35rem;
+}
+.staff .sidebar nav a {
+  padding: 0.65rem 0.75rem;
+  border-inline-start: 2px solid transparent;
+  font-size: 0.94rem;
+}
+.staff .sidebar nav a:hover,
+.staff .sidebar nav a[aria-current="page"] {
+  background: #415246;
+  border-inline-start-color: #c5ae84;
+  text-decoration: none;
+}
+.staff .sidebar nav .ghost {
+  margin-top: 1.8rem;
+}
+.staff .rail-toggle {
+  display: none;
+}
+.staff .admin-main {
+  background: #f8f6f0;
+  padding: clamp(1.3rem, 3.6vw, 3.75rem);
+  max-width: 1600px;
+}
+.staff .admin-main h1 {
+  font-size: clamp(2.75rem, 5vw, 5.2rem);
+  letter-spacing: -0.035em;
+  margin-bottom: 0.25rem;
+}
+.staff .admin-main h2 {
+  font-size: clamp(1.9rem, 2.7vw, 2.8rem);
+}
+.staff .admin-main h3 {
+  font-size: clamp(1.5rem, 2vw, 2rem);
+}
+.desk-intro {
+  color: var(--muted);
+  max-width: 61ch;
+  margin-bottom: 1.65rem;
+}
+.desk-actions {
+  margin-block: 1rem;
+}
+.staff .metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border: 1px solid var(--line);
+  background: #fffdf9;
+  box-shadow: 0 7px 22px #37433407;
+}
+.staff .metric {
+  padding: 1rem clamp(0.8rem, 1.8vw, 1.6rem);
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  min-width: 0;
+  background: transparent;
+}
+.staff .metric:nth-child(3n) {
+  border-right: 0;
+}
+.staff .metric:nth-last-child(-n + 3) {
+  border-bottom: 0;
+}
+.staff .metric span {
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+.staff .metric strong {
+  font-size: clamp(2rem, 3.3vw, 3.1rem);
+  line-height: 1.1;
+  color: var(--staff-green);
+  margin-top: 0.25rem;
+}
+.desk-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(200px, 1fr);
+  gap: 1rem;
+}
+.desk-columns > section {
+  margin: 0;
+}
+.desk-list,
+.activity-list {
+  list-style: none;
+  padding: 0;
+}
+.desk-list li,
+.activity-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  justify-content: space-between;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.activity-list li > div {
+  flex: 1;
+  display: grid;
+}
+.activity-list time,
+.thread-message time {
+  font-size: 0.83rem;
+  color: var(--muted);
+}
+.desk-heading,
+.record-tags,
+.contact-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.desk-heading {
+  justify-content: space-between;
+  margin-bottom: 0.9rem;
+}
+.staff td small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.state-pill,
+.record-tags > span {
+  display: inline-block;
+  padding: 0.23rem 0.55rem;
+  border: 1px solid #c6cabb;
+  color: #3b4e40;
+  background: #f1f3eb;
+  font-size: 0.8rem;
+}
+.staff .filterbar {
+  align-items: end;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 135px), 1fr));
+}
+.staff .filterbar label,
+.staff .formgrid label,
+.staff .stack label {
+  min-width: 0;
+}
+.staff .desk-filters input {
+  min-width: 0;
+}
+.staff .admin-main dialog {
+  border: 1px solid var(--line);
+  padding: clamp(1rem, 2.4vw, 2rem);
+  width: min(860px, 95vw);
+  background: #fffdf9;
+}
+.staff .admin-main dialog::backdrop {
+  background: #1d2c22b8;
+}
+.staff .desk-specs {
+  grid-template-columns: minmax(100px, 0.65fr) minmax(0, 1.4fr);
+}
+.desk-specs dd,
+.thread-message p,
+.quote-summary p {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.staff .desk-record-section {
+  border-top: 1px solid var(--line);
+  padding-top: 1.35rem;
+  margin-bottom: 0;
+}
+.desk-record-section h3 {
+  margin-bottom: 0.8rem;
+}
+#record-error,
+.admin-main #feedback {
+  color: #88371e;
+  margin-block: 0.6rem;
+}
+.staff .admin-main :is(#record-error, #feedback):empty {
+  display: none;
+}
+.staff .admin-main dialog :is(.contact-tools, .actions) {
+  margin-top: 0.85rem;
+}
+.desk-record-section .stack {
+  max-width: 52rem;
+}
+.quote-summary,
+.quote-check {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.25rem;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #eff0e7;
+  border: 1px solid var(--line);
+  padding: 0.85rem 1.1rem;
+}
+.quote-summary span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.quote-summary strong {
+  font: 2rem var(--serif);
+  color: var(--staff-green);
+}
+.quote-history,
+.quote-editor {
+  border-bottom: 1px solid var(--line);
+  padding: 0.75rem 0;
+}
+.quote-history summary,
+.quote-editor summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.quote-editor form {
+  margin-top: 1rem;
+}
+.thread-list {
+  max-height: 23rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.65rem 0.25rem;
+  background: #f7f5ef;
+}
+.thread-message {
+  width: min(86%, 35rem);
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--line);
+  background: white;
+}
+.thread-message.from-staff {
+  align-self: flex-end;
+  background: #e9eee5;
+}
+.thread-message header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+}
+.thread-message p {
+  margin-top: 0.2rem;
+}
+.staff-login {
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+  padding: clamp(0.7rem, 4vw, 4rem);
+  background: #e8dfd2;
+}
+.staff-login .login-panel {
+  width: min(900px, 100%);
+  max-width: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 auto;
+  padding: 0;
+}
+.login-photo {
+  min-height: 430px;
+}
+.login-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.login-fields {
+  padding: clamp(1.4rem, 3.5vw, 3rem);
+  align-self: center;
+}
+.login-fields h1 {
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+}
+@media (max-width: 850px) {
+  .staff .admin-layout {
+    grid-template-columns: 1fr;
+  }
+  .staff .sidebar {
+    padding: 0.8rem 1rem;
+  }
+  .staff .rail-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    border: 0;
+  }
+  .staff .studio-name {
+    font-size: 1.65rem;
+  }
+  .staff .studio-name i {
+    display: inline;
+  }
+  .staff .rail-toggle {
+    display: inline-flex;
+  }
+  .staff .sidebar nav {
+    display: none;
+  }
+  .staff .sidebar.expanded nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .staff .sidebar nav .ghost {
+    margin-top: 0;
+  }
+}
+@media (max-width: 610px) {
+  .desk-columns,
+  .staff-login .login-panel {
+    grid-template-columns: 1fr;
+  }
+  .staff .metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .staff .metric:nth-child(n) {
+    border: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .staff .metric:nth-child(odd) {
+    border-right: 1px solid var(--line);
+  }
+  .staff .metric:last-child {
+    border-bottom: 0;
+  }
+  .activity-list li {
+    flex-wrap: wrap;
+  }
+  .activity-list li > div {
+    flex-basis: 100%;
+  }
+  .staff-login .login-photo {
+    min-height: 0;
+    height: 140px;
+  }
+  .staff .desk-specs {
+    grid-template-columns: minmax(70px, 0.8fr) minmax(0, 1.3fr);
+  }
+}

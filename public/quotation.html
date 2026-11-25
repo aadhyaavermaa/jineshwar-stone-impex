@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Request a quotation | Jineshwar Stone Impex</title>
+    <meta
+      name="description"
+      content="Request a quotation at Jineshwar Stone Impex. Explore natural stone, architectural furniture and marble handicrafts."
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <script defer src="/js/main.js"></script>
+    <script defer src="/js/enquiries.js"></script>
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main id="main" tabindex="-1">
+      <div class="page-head">
+        <div class="wrap">
+          <div class="eyebrow">Enquiry desk</div>
+          <h1>Request a quotation</h1>
+          <p class="intro">
+            Share your chosen material, quantity and destination so the studio can prepare a
+            quotation.
+          </p>
+        </div>
+      </div>
+      <section class="wrap section twocol">
+        <div class="formbox">
+          <h2>Project details</h2>
+          <form id="request" class="formgrid" style="margin-top: 1.5rem">
+            <label
+              >Customer name<input
+                type="text"
+                name="customer_name"
+                required
+                maxlength="100"
+                autocomplete="name" /></label
+            ><label
+              >Email address<input
+                type="email"
+                name="email"
+                required
+                maxlength="254"
+                autocomplete="email" /></label
+            ><label
+              >Phone number<input
+                type="tel"
+                name="phone"
+                required
+                maxlength="30"
+                minlength="7"
+                autocomplete="tel" /></label
+            ><label
+              >Selected product<select name="product_id" required>
+                <option value="">Choose an option</option>
+              </select></label
+            ><label
+              >Required quantity<input
+                type="number"
+                name="quantity"
+                required
+                min="0.000001"
+                max="1000000000"
+                step="any" /></label
+            ><label
+              >Quantity unit<select name="quantity_unit" required>
+                <option value="sq ft">sq ft</option>
+                <option value="sq m">sq m</option>
+                <option value="pieces">pieces</option>
+              </select></label
+            ><label
+              >Project type<select name="project_type" required>
+                <option value="">Choose an option</option>
+                <option value="Residential">Residential</option>
+                <option value="Commercial">Commercial</option>
+                <option value="Other">Other</option>
+              </select></label
+            ><label
+              >Delivery location<input
+                type="text"
+                name="delivery_location"
+                required
+                maxlength="200" /></label
+            ><label class="wide"
+              >Additional requirements (optional)<textarea
+                name="message"
+                maxlength="3000"
+              ></textarea>
+            </label>
+            <div class="wide"><button class="btn">Submit request</button></div>
+          </form>
+          <div id="response" aria-live="polite"></div>
+        </div>
+        <aside class="surface stack">
+          <div class="eyebrow">Project desk</div>
+          <h3>How much stone do you need?</h3>
+          <p>
+            Use the calculator to allow for cuts and wastage, then transfer your estimate to this
+            form.
+          </p>
+          <a class="textlink" href="/calculator.html">Open stone calculator</a>
+        </aside>
+      </section>
+    </main>
+    <footer class="foot" id="site-footer"></footer>
+  </body>
+</html>

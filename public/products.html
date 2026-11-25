@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>The stone collection | Jineshwar Stone Impex</title>
+    <meta
+      name="description"
+      content="The stone collection at Jineshwar Stone Impex. Explore natural stone, architectural furniture and marble handicrafts."
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <script defer src="/js/main.js"></script>
+    <script defer src="/js/products.js"></script>
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main id="main" tabindex="-1">
+      <div class="page-head">
+        <div class="wrap">
+          <div class="eyebrow">Material library</div>
+          <h1>The stone collection</h1>
+          <p class="intro">
+            Browse the demonstration catalogue by material, colour, finish and
+            application. Specifications and availability are examples.
+          </p>
+        </div>
+      </div>
+      <section class="wrap section">
+        <div class="filterbar">
+          <label
+            >Search materials<input
+              id="search"
+              type="search"
+              placeholder="Name, code or material" /></label
+          ><label
+            >Category<select id="category">
+              <option value="">All</option>
+            </select></label
+          ><label
+            >Colour<select id="colour">
+              <option value="">All</option>
+            </select></label
+          ><label
+            >Finish<select id="finish">
+              <option value="">All</option>
+            </select></label
+          ><label
+            >Application<select id="applications">
+              <option value="">All</option>
+            </select></label
+          ><label
+            >Sort by<select id="sort">
+              <option value="">Collection order</option>
+              <option value="asc">Name A–Z</option>
+              <option value="desc">Name Z–A</option>
+            </select></label
+          ><button class="outline" id="reset">Reset filters</button>
+        </div>
+        <div class="listing-tools">
+          <p class="results" id="count" aria-live="polite"></p>
+          <a class="textlink" href="/brochure.html">Create my brochure</a>
+        </div>
+        <div id="listing" class="cards">
+          <div class="skeleton" aria-label="Loading materials"></div>
+        </div>
+      </section>
+      <section
+        class="wrap section recent-section"
+        id="recent-products"
+        hidden
+      ></section>
+    </main>
+    <footer class="foot" id="site-footer"></footer>
+  </body>
+</html>

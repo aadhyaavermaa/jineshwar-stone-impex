@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Customer dashboard | Jineshwar Stone Impex</title>
+    <meta
+      name="description"
+      content="Manage your stone projects, enquiries, quotations and account preferences."
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <link rel="stylesheet" href="/css/customer.css" />
+    <script defer src="/js/main.js"></script>
+    <script defer src="/js/customer-common.js"></script>
+    <script defer src="/js/customer-request.js"></script>
+    <script defer src="/js/customer-settings.js"></script>
+    <script defer src="/js/customer-dashboard.js"></script>
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main id="main" tabindex="-1" class="wrap account-page">
+      <div class="account-layout">
+        <aside class="account-sidebar">
+          <div class="eyebrow">Customer studio</div>
+          <div class="account-identity">
+            <span class="customer-monogram" aria-hidden="true">JS</span
+            ><span id="sidebar-name">Your account</span>
+          </div>
+          <nav aria-label="Customer dashboard">
+            <a href="/dashboard.html?section=overview" data-account-section="overview">Overview</a
+            ><a href="/dashboard.html?section=enquiries" data-account-section="enquiries"
+              >My Requests</a
+            ><a href="/dashboard.html?section=quotations" data-account-section="quotations"
+              >Quotation Requests</a
+            ><a href="/dashboard.html?section=consultations" data-account-section="consultations"
+              >Consultancy Requests</a
+            ><a href="/dashboard.html?section=samples" data-account-section="samples"
+              >Sample Requests</a
+            ><a href="/dashboard.html?section=contacts" data-account-section="contacts"
+              >Contact Messages</a
+            ><a href="/dashboard.html?section=conversations" data-account-section="conversations"
+              >Conversations</a
+            ><a href="/dashboard.html?section=saved" data-account-section="saved">Saved stones</a
+            ><a href="/dashboard.html?section=projects" data-account-section="projects"
+              >My projects</a
+            ><a href="/dashboard.html?section=notifications" data-account-section="notifications"
+              >Notifications</a
+            ><a href="/dashboard.html?section=profile" data-account-section="profile">My profile</a
+            ><a href="/dashboard.html?section=settings" data-account-section="settings"
+              >Account settings</a
+            >
+          </nav>
+          <button id="customer-signout" class="outline" type="button">Sign out</button>
+        </aside>
+        <section class="account-work" aria-labelledby="section-title">
+          <header class="account-heading">
+            <div class="eyebrow">My workspace</div>
+            <h1 id="section-title">Overview</h1>
+          </header>
+          <div id="account-content" aria-busy="true">
+            <p role="status">Loading your account…</p>
+          </div>
+          <div id="account-alert" role="status"></div>
+        </section>
+      </div>
+      <dialog id="account-dialog" aria-labelledby="dialog-title">
+        <div class="account-dialog-head">
+          <h2 id="dialog-title">Request details</h2>
+          <button type="button" class="outline" id="close-account-dialog">Close</button>
+        </div>
+        <div id="dialog-content"></div>
+        <p id="dialog-feedback" role="status"></p>
+      </dialog>
+    </main>
+    <footer id="site-footer" class="foot"></footer>
+  </body>
+</html>

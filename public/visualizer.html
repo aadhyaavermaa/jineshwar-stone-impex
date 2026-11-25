@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Stone visualizer | Jineshwar Stone Impex</title>
+    <meta
+      name="description"
+      content="Choose a room and lay a catalogue texture into its floors, walls or worktop."
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <link rel="stylesheet" href="/css/studio.css" />
+    <script defer src="/js/main.js"></script>
+    <script defer src="/js/studio.js"></script>
+    <script defer src="/js/rooms.js"></script>
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main id="main" tabindex="-1">
+      <header class="page-head studio-head">
+        <div class="wrap">
+          <div class="eyebrow">Design studio</div>
+          <h1>Stone visualizer</h1>
+          <p class="intro">
+            Choose a room and lay a catalogue texture into its floors, walls or
+            worktop.
+          </p>
+        </div>
+      </header>
+      <section class="wrap section studio-work">
+        <div class="studio-layout">
+          <figure class="studio-figure">
+            <img
+              id="room-result"
+              alt="Room preview"
+              src="/images/rooms/living.webp"
+            />
+            <figcaption>
+              Illustrative material preview. Actual veining, colour, scale and
+              finish vary by slab and lighting.
+            </figcaption>
+          </figure>
+          <aside class="studio-panel">
+            <label>Room environment<select id="room"></select></label>
+            <h2>Stone finish</h2>
+            <div class="studio-swatches" id="textures"></div>
+            <div id="material-info" aria-live="polite"></div>
+            <button type="button" id="reset-preview" class="outline">
+              Reset preview
+            </button>
+          </aside>
+        </div>
+        <p role="status" id="studio-status">Loading the catalogue…</p>
+      </section>
+    </main>
+    <footer class="foot" id="site-footer"></footer>
+  </body>
+</html>

@@ -1,0 +1,151 @@
+@media (max-width: 1050px) {
+  .navtools {
+    gap: 0.6rem;
+  }
+  .mast > .wrap {
+    width: 94%;
+  }
+  .cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .nav {
+    gap: 0.75rem;
+  }
+  .navtools .quotetop {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  .mobile {
+    display: inline-grid;
+  }
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    padding: 1rem 5%;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav.open {
+    display: grid;
+  }
+  .nav a {
+    padding: 0.45rem;
+  }
+  .mast > .wrap {
+    min-height: 65px;
+    width: 90%;
+  }
+  .category-grid,
+  .cards,
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .twocol {
+    grid-template-columns: 1fr;
+  }
+  .hero:before {
+    background: linear-gradient(90deg, #171a11e0, #22251a88 65%, #22251a33);
+  }
+  .hero {
+    min-height: 485px;
+  }
+  .story {
+    gap: 1.5rem;
+  }
+  .section-head {
+    align-items: start;
+  }
+  .navtools .quotetop {
+    display: inline-flex;
+  }
+  .topbar a {
+    font-size: 0.72rem;
+  }
+}
+@media (max-width: 570px) {
+  .navtools .quotetop {
+    display: none;
+  }
+  .hero h1 {
+    font-size: 3.85rem;
+  }
+  .hero > img {
+    object-position: 60% center;
+  }
+  .hero p {
+    max-width: 315px;
+  }
+  .topbar {
+    font-size: 0.66rem;
+  }
+  .story,
+  .gallery-grid,
+  .formgrid {
+    grid-template-columns: 1fr;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .category-grid {
+    gap: 0.65rem;
+  }
+  .category {
+    aspect-ratio: 1.08;
+  }
+  .category strong {
+    font-size: 1.45rem;
+    left: 10px;
+    bottom: 9px;
+  }
+  .section-head {
+    flex-wrap: wrap;
+  }
+  .hero-foot {
+    font-size: 0.64rem;
+  }
+  .hero .wrap {
+    padding: 48px 0 88px;
+  }
+  .filterbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .gallery-card img {
+    height: 230px;
+  }
+  .hero .actions {
+    gap: 0.45rem;
+  }
+  .hero .actions a {
+    padding: 0.65rem 0.8rem;
+  }
+  .foot .wrap > div:first-child {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .foot .brand {
+    grid-column: 1/-1;
+  }
+  .cardbody p {
+    font-size: 1rem;
+  }
+  .brand strong {
+    font-size: 1.26rem;
+  }
+  .brandmark {
+    width: 31px;
+    height: 36px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *:before,
+  *:after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}

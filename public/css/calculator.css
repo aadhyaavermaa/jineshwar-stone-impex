@@ -1,0 +1,217 @@
+.planner-heading {
+  padding-top: clamp(2.4rem, 5vw, 5.3rem);
+  padding-bottom: 2rem;
+}
+.planner-heading h1 {
+  font-size: clamp(3rem, 5.8vw, 5.8rem);
+}
+.planner-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.27fr) minmax(0, 1fr);
+  gap: clamp(1.6rem, 5vw, 5rem);
+  align-items: start;
+  margin-bottom: clamp(3rem, 6vw, 7rem);
+}
+.planner-form,
+.planner-paper,
+.planner-save {
+  min-width: 0;
+}
+.planner-form fieldset {
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 0 0 1.6rem;
+  margin: 0 0 1.5rem;
+  min-width: 0;
+}
+.planner-form legend {
+  padding: 0;
+  margin-bottom: 1rem;
+  font: normal 1.7rem/1.1 var(--serif);
+}
+.planner-form .planner-mode legend {
+  font: 500 0.85rem var(--sans);
+}
+.planner-tabs {
+  display: flex;
+  border: 1px solid #a9aa9c;
+}
+.planner-tabs label {
+  flex: 1;
+  min-width: 0;
+}
+.planner-tabs span {
+  display: grid;
+  place-items: center;
+  min-height: 46px;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 0.3rem;
+  cursor: pointer;
+  line-height: 1.2;
+}
+.planner-tabs label + label {
+  border-left: 1px solid #a9aa9c;
+}
+.planner-tabs input {
+  position: absolute;
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+.planner-tabs input:checked + span {
+  color: white;
+  background: #29382e;
+}
+.planner-tabs input:focus-visible + span {
+  outline: 3px solid #ac763c;
+  outline-offset: -4px;
+}
+.planner-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: end;
+}
+.planner-grid + .planner-grid {
+  margin-top: 1rem;
+}
+.planner-trio {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.planner-wide {
+  grid-column: 1/-1;
+}
+.planner-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+}
+.planner-paper {
+  background: #e8dfd2;
+  border-top: 3px solid #29382e;
+  padding: clamp(1.25rem, 2.6vw, 2.4rem);
+  color: #262821;
+}
+.planner-paper h2 {
+  font-size: clamp(2rem, 3.2vw, 3.4rem);
+}
+.planner-paper .eyebrow {
+  color: #565b46;
+}
+#estimate {
+  min-height: 7rem;
+  padding-top: 1rem;
+}
+.planner-amount {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  font: clamp(2.8rem, 5vw, 5rem)/1 var(--serif);
+  color: #29382e;
+  overflow-wrap: anywhere;
+}
+.planner-amount small {
+  font: 0.95rem var(--sans);
+}
+.planner-breakdown {
+  margin: 1.4rem 0;
+}
+.planner-breakdown div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  padding: 0.4rem 0;
+  gap: 0.5rem;
+  border-bottom: 1px solid #c9c0b2;
+}
+.planner-breakdown dd,
+.planner-breakdown dt {
+  padding: 0;
+  margin: 0;
+  font-size: 0.93rem;
+}
+.planner-breakdown dd {
+  text-align: right;
+}
+.planner-note {
+  font-size: 0.86rem;
+  margin-top: 1.4rem;
+  color: #494a41;
+}
+.planner-save {
+  padding: 1.4rem 0;
+  display: grid;
+  gap: 0.8rem;
+}
+.planner-save button {
+  justify-self: start;
+}
+.planner-save h3 {
+  font-size: 1.8rem;
+}
+#save-status a {
+  text-decoration: underline;
+}
+.print-only {
+  display: none;
+}
+@media (max-width: 830px) {
+  .planner-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+}
+@media (max-width: 520px) {
+  .planner-trio {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .planner-trio label:last-child {
+    grid-column: 1/-1;
+  }
+  .planner-grid {
+    gap: 0.7rem;
+  }
+  .planner-tabs span {
+    font-size: 0.8rem;
+  }
+}
+@media print {
+  body {
+    background: white !important;
+    color: black;
+  }
+  .mast,
+  .topbar,
+  .foot,
+  .skip,
+  .planner-heading,
+  .planner-form,
+  .planner-save,
+  .planner-buttons,
+  .toast,
+  body > header,
+  body > nav {
+    display: none !important;
+  }
+  .planner-layout {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+  .planner-paper {
+    background: transparent;
+    border: 1px solid #777;
+    padding: 1.5rem;
+  }
+  .print-only {
+    display: block;
+  }
+  .planner-amount {
+    font-size: 3rem;
+  }
+}

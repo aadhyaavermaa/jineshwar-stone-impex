@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Material moodboard | Jineshwar Stone Impex</title>
+    <meta
+      name="description"
+      content="Arrange catalogue samples, choose a palette and export an inspiration board for your project."
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <link rel="stylesheet" href="/css/studio.css" />
+    <script defer src="/js/main.js"></script>
+    <script defer src="/js/studio.js"></script>
+    <script defer src="/js/moodboard.js"></script>
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main id="main" tabindex="-1">
+      <header class="page-head studio-head">
+        <div class="wrap">
+          <div class="eyebrow">Design studio</div>
+          <h1>Material moodboard</h1>
+          <p class="intro">
+            Arrange catalogue samples, choose a palette and export an
+            inspiration board for your project.
+          </p>
+        </div>
+      </header>
+      <section class="wrap section studio-work">
+        <div class="studio-layout board-layout">
+          <div>
+            <canvas
+              id="board"
+              width="1200"
+              height="820"
+              tabindex="0"
+              aria-label="Design canvas. Select a layer below, then use arrow keys to move it."
+            ></canvas>
+            <p class="studio-hint">
+              Drag to arrange. Drag the corner handle or use the size control to
+              resize. Arrow keys move the selected layer.
+            </p>
+            <div class="actions">
+              <button class="btn" id="export-board">Download PNG</button
+              ><button class="outline" id="reset-board">Reset board</button>
+            </div>
+          </div>
+          <aside class="studio-panel">
+            <label
+              >Project title<input type="text" maxlength="55" id="board-title"
+            /></label>
+            <label
+              >Background palette<select id="board-colour">
+                <option value="#f5efe3">Warm ivory</option>
+                <option value="#e3d9ca">Limestone</option>
+                <option value="#d1d8ce">Soft sage</option>
+                <option value="#c2bcb2">Clay grey</option>
+              </select></label
+            >
+            <label
+              >Catalogue material<select id="board-material"></select></label
+            ><button class="outline" id="add-sample">
+              Add material sample
+            </button>
+            <label
+              >Short note<input
+                type="text"
+                id="board-note"
+                maxlength="55"
+                placeholder="e.g. Honed finish for the entry" /></label
+            ><button class="outline" id="add-note">Add note</button>
+            <label>Selected layer<select id="layers"></select></label
+            ><label
+              >Layer width<input
+                type="range"
+                id="layer-size"
+                min="120"
+                max="700"
+            /></label>
+            <div class="actions">
+              <button class="outline" id="remove-layer">Remove layer</button
+              ><a class="textlink" id="open-layer" hidden>View product</a>
+            </div>
+          </aside>
+        </div>
+        <dialog id="board-reset-dialog">
+          <h2>Clear your moodboard?</h2>
+          <p>This removes its samples, notes and title from this browser.</p>
+          <div class="actions">
+            <button class="outline" id="cancel-reset">Keep board</button
+            ><button class="btn" id="confirm-reset">Clear board</button>
+          </div>
+        </dialog>
+        <p role="status" id="studio-status">Loading the catalogue…</p>
+      </section>
+    </main>
+    <footer class="foot" id="site-footer"></footer>
+  </body>
+</html>

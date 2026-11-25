@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Request a stone sample | Jineshwar Stone Impex</title>
+    <meta
+      name="description"
+      content="Request a stone sample at Jineshwar Stone Impex. Explore natural stone, architectural furniture and marble handicrafts."
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <script defer src="/js/main.js"></script>
+    <script defer src="/js/enquiries.js"></script>
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main id="main" tabindex="-1">
+      <div class="page-head">
+        <div class="wrap">
+          <div class="eyebrow">Enquiry desk</div>
+          <h1>Request a stone sample</h1>
+          <p class="intro">
+            Tell us which surface you would like to see and where you would like
+            it delivered.
+          </p>
+        </div>
+      </div>
+      <section class="wrap section twocol">
+        <div class="formbox">
+          <h2>Project details</h2>
+          <form id="request" class="formgrid" style="margin-top: 1.5rem">
+            <label
+              >Customer name<input
+                type="text"
+                name="customer_name"
+                required
+                maxlength="100"
+                autocomplete="name" /></label
+            ><label
+              >Email address<input
+                type="email"
+                name="email"
+                required
+                maxlength="254"
+                autocomplete="email" /></label
+            ><label
+              >Phone number<input
+                type="tel"
+                name="phone"
+                required
+                maxlength="30"
+                minlength="7"
+                autocomplete="tel" /></label
+            ><label
+              >Selected product<select name="product_id" required>
+                <option value="">Choose an option</option>
+              </select></label
+            >
+            <label class="wide"
+              >Delivery address<textarea
+                name="delivery_location"
+                required
+                maxlength="200"
+                autocomplete="street-address"
+              ></textarea>
+            </label>
+            <label
+              >City<input
+                name="city"
+                required
+                maxlength="100"
+                autocomplete="address-level2"
+            /></label>
+            <label
+              >Postal code<input
+                name="postal_code"
+                required
+                maxlength="16"
+                autocomplete="postal-code"
+            /></label>
+            <label class="wide"
+              >Intended application<input
+                name="application"
+                required
+                maxlength="160"
+                placeholder="e.g. Kitchen countertop"
+            /></label>
+            <label class="wide"
+              >Additional requirements (optional)<textarea
+                name="message"
+                maxlength="3000"
+              ></textarea>
+            </label>
+            <div class="wide"><button class="btn">Submit request</button></div>
+          </form>
+          <div id="response" aria-live="polite"></div>
+        </div>
+        <aside class="surface stack">
+          <div class="eyebrow">Project desk</div>
+          <h3>What happens next?</h3>
+          <p>
+            The studio reviews material availability and delivery arrangements
+            before confirming a sample. Check progress using the codes on your
+            receipt.
+          </p>
+          <a class="textlink" href="/products.html">Explore the collection</a>
+        </aside>
+      </section>
+    </main>
+    <footer class="foot" id="site-footer"></footer>
+  </body>
+</html>

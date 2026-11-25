@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Your product brochure | Jineshwar Stone Impex</title>
+    <meta
+      name="description"
+      content="Build a printable selection with material references, finishes and project applications."
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <link rel="stylesheet" href="/css/studio.css" />
+    <script defer src="/js/main.js"></script>
+    <script defer src="/js/studio.js"></script>
+    <script defer src="/js/brochure.js"></script>
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main id="main" tabindex="-1">
+      <header class="page-head studio-head">
+        <div class="wrap">
+          <div class="eyebrow">Design studio</div>
+          <h1>Your product brochure</h1>
+          <p class="intro">
+            Build a printable selection with material references, finishes and
+            project applications.
+          </p>
+        </div>
+      </header>
+      <section class="wrap section studio-work">
+        <div class="brochure-tools studio-panel">
+          <label
+            >Catalogue product<select id="brochure-product"></select
+          ></label>
+          <div class="actions">
+            <button class="btn" id="add-product">Add product</button
+            ><button class="outline" id="add-wishlist">Add wishlist</button
+            ><button class="outline" id="print-brochure">
+              Print / save PDF
+            </button>
+          </div>
+        </div>
+        <article class="brochure-paper" id="brochure-paper">
+          <header class="brochure-mast">
+            <div class="brand">
+              <i class="brandmark" aria-hidden="true"></i
+              ><span><strong>Jineshwar</strong><small>Stone Impex</small></span>
+            </div>
+            <span id="edition-date"></span>
+          </header>
+          <h2>Material selection</h2>
+          <div id="brochure-items"></div>
+          <footer class="brochure-contact">
+            <h3>Contact the studio</h3>
+            <p>
+              KH. No. 1175, G/F, Fatehpur Beri, New Delhi, Delhi 110074<br />+91
+              93113 36800 · jineshwarstoneimpex@gmail.com
+            </p>
+          </footer>
+        </article>
+        <p role="status" id="studio-status">Loading the catalogue…</p>
+      </section>
+    </main>
+    <footer class="foot" id="site-footer"></footer>
+  </body>
+</html>
