@@ -171,6 +171,7 @@ async function api(url, options = {}) {
   if (!response.ok) {
     const err = Error(data.error || "Unable to load data.");
     err.status = response.status;
+    err.code = data.code;
     throw err;
   }
   return data;

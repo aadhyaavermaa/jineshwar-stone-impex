@@ -6,7 +6,10 @@ function authenticated(req, res, next) {
 function csrf(req, res, next) {
   if (["GET", "HEAD", "OPTIONS"].includes(req.method)) return next();
   if (req.get("X-CSRF-Token") && req.get("X-CSRF-Token") === req.session.csrf) return next();
-  res.status(403).json({ error: "Session verification failed. Refresh and try again." });
+  res.status(403).json({
+    code: "CSRF_MISMATCH",
+    error: "Session verification failed. Refresh and try again.",
+  });
 }
 // A bounded, process-local counter is sufficient for a single local classroom server.
 function limit(max) {

@@ -19,7 +19,8 @@ test("catalogue, enquiry lifecycle, protected CRUD and restart persistence", asy
     ...process.env,
     PORT: String(port),
     HOST: "127.0.0.1",
-    NODE_ENV: "test",
+    NODE_ENV: "production",
+    RENDER: "true",
     SMTP_HOST: "",
     SMTP_FROM: "",
     DB_PATH: path.join(dir, "test.sqlite"),
@@ -27,6 +28,7 @@ test("catalogue, enquiry lifecycle, protected CRUD and restart persistence", asy
     ADMIN_USERNAME: "integration",
     ADMIN_PASSWORD: randomBytes(18).toString("hex"),
   };
+  delete env.TRUST_PROXY;
   let child,
     cookie = "",
     csrf = "";
@@ -57,7 +59,12 @@ test("catalogue, enquiry lifecycle, protected CRUD and restart persistence", asy
   async function req(route, method = "GET", body, token = csrf) {
     const response = await fetch(base + "/api/" + route, {
       method,
-      headers: { "Content-Type": "application/json", Cookie: cookie, "X-CSRF-Token": token },
+      headers: {
+        "Content-Type": "application/json",
+        "X-Forwarded-Proto": "https",
+        Cookie: cookie,
+        "X-CSRF-Token": token,
+      },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
     return {
@@ -66,6 +73,10 @@ test("catalogue, enquiry lifecycle, protected CRUD and restart persistence", asy
       cookie: response.headers.get("set-cookie")?.split(";")[0],
     };
   }
+  const session = await fetch(base + "/api/auth/session", {
+    headers: { "X-Forwarded-Proto": "https" },
+  });
+  assert.match(session.headers.get("set-cookie") || "", /; Secure(?:;|$)/);
   const products = (await req("products")).data;
   assert.ok(products.length >= 10);
   assert.ok((await req("products?featured=true")).data.every((p) => p.is_featured));

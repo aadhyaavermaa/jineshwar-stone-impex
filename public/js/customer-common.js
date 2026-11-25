@@ -8,12 +8,21 @@ const customerUI = (() => {
     return snapshot;
   }
   async function write(path, method, body = {}) {
-    const current = await session();
-    return api(path, {
+    const send = (current) => api(path, {
       method,
       headers: { "X-CSRF-Token": current.csrf },
       body: JSON.stringify(body),
     });
+    try {
+      return await send(await session());
+    } catch (error) {
+      if (
+        error.code !== "CSRF_MISMATCH" ||
+        !/^\/api\/auth\/(login|signup|forgot-password|reset-password)$/.test(path)
+      )
+        throw error;
+      return send(await session(true));
+    }
   }
   function safeReturn(value) {
     const fallback = "/dashboard.html";

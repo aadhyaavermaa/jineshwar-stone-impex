@@ -33,22 +33,28 @@ async function change(url, method, data) {
 const options = (values) =>
   values.map((v) => '<option value="' + h(v) + '">' + h(v) + "</option>").join("");
 if (page === "login") {
-  $("#login").onsubmit = async (e) => {
+  const form = $("#login"),
+    button = $("button", form);
+  form.onsubmit = async (e) => {
     e.preventDefault();
-    const form = e.currentTarget,
-      button = $("button", form);
+    if (button.disabled) return;
     button.disabled = true;
+    feedback.textContent = "";
     try {
       await api("/api/admin/login", {
         method: "POST",
         body: JSON.stringify(Object.fromEntries(new FormData(form))),
       });
+      const session = await api("/api/admin/session");
+      if (!session.authenticated)
+        throw Error("The browser could not keep your sign-in session. Check that cookies are enabled and try again.");
       location.assign("/admin/dashboard.html");
     } catch (err) {
-      report(err);
+      report(err instanceof TypeError ? Error("Could not reach the server. Try signing in again.") : err);
       button.disabled = false;
     }
   };
+  button.disabled = false;
 } else {
   boot().catch(report);
 }

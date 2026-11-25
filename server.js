@@ -4,11 +4,13 @@ const session = require("express-session");
 const path = require("node:path");
 const app = express();
 const live = process.env.NODE_ENV === "production";
+const onRender = process.env.RENDER === "true";
 const secret = process.env.SESSION_SECRET;
 if (!secret || secret.length < 32)
   throw Error("Set SESSION_SECRET to at least 32 random characters in .env.");
 app.disable("x-powered-by");
-if (process.env.TRUST_PROXY === "1") app.set("trust proxy", 1);
+const trustProxy = process.env.TRUST_PROXY ?? (onRender ? "1" : "0");
+if (trustProxy === "1") app.set("trust proxy", 1);
 app.use((req, res, next) => {
   res
     .set("X-Content-Type-Options", "nosniff")
@@ -75,8 +77,9 @@ function option(name, fallback) {
   return index < 0 ? fallback : process.argv[index + 1];
 }
 const port = Number(option("--port", process.env.PORT)) || 3000;
+const host = option("--host", process.env.HOST || (onRender ? "0.0.0.0" : "127.0.0.1"));
 if (require.main === module)
-  app.listen(port, option("--host", process.env.HOST || "127.0.0.1"), () =>
+  app.listen(port, host, () =>
     console.log("Stone catalogue listening on port " + port),
   );
 module.exports = app;
