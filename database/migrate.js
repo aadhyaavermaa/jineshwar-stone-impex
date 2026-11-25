@@ -18,8 +18,8 @@ function backup(db, file) {
 function initialize(db, file) {
   db.exec("PRAGMA foreign_keys=ON;PRAGMA busy_timeout=5000");
   const version = db.prepare("PRAGMA user_version").get().user_version;
-  if (version === 3) return;
-  if (version !== 0 && version !== 2) throw Error("Unrecognized database version. Migration stopped.");
+  if (version === 4) return;
+  if (![0, 2, 3].includes(version)) throw Error("Unrecognized database version. Migration stopped.");
   const existing = db
     .prepare("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'")
     .all()
@@ -56,7 +56,16 @@ function initialize(db, file) {
     }
     if (lockedVersion < 3) {
       db.exec(fs.readFileSync(path.join(__dirname, "ist.sql"), "utf8"));
-      db.exec("PRAGMA user_version=3");
+    }
+    if (lockedVersion < 4) {
+      db.exec(`
+        CREATE TABLE password_resets (
+          user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+          token_hash TEXT NOT NULL UNIQUE,
+          expires_at INTEGER NOT NULL
+        );
+        PRAGMA user_version=4;
+      `);
     }
     db.exec("COMMIT");
   } catch (err) {
@@ -71,7 +80,7 @@ if (require.main === module) {
     if (process.argv.includes("--backup")) console.log("Database backup:", backup(db, filename));
     else {
       initialize(db, filename);
-      console.log("Database schema version 3 ready.");
+      console.log("Database schema version 4 ready.");
     }
   } finally {
     db.close();

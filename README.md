@@ -105,6 +105,14 @@ You can also open a **copy** in DB Browser for SQLite and use Browse Data or Exe
 
 ### Enable optional SMTP delivery
 
+Customer password reset uses the same SMTP settings. Set `PUBLIC_BASE_URL` to the site's HTTPS origin, or to `http://localhost:3000` when testing locally with that port. Open **Forgot password?** from customer sign-in and enter the registered address. The emailed link expires after 30 minutes.
+
+For a hosted deployment, set `PUBLIC_BASE_URL` and the SMTP variables in the hosting service's environment settings. Keep `.env` local. The host must allow outbound connections to the SMTP provider (TCP port 465 for the Gmail settings below). Set `HOST=0.0.0.0` if the hosting service connects to the app over the network, and `TRUST_PROXY=1` when production HTTPS terminates at one trusted reverse proxy. Keep `DB_PATH` on persistent storage so accounts and pending reset links survive redeploys. The app applies the database migration at startup.
+
+After redeploying, use a test password account on the live site. Request a reset, check that the email link opens the live HTTPS domain, and sign in with the new password. Reopening the link should produce an invalid-link error when submitted again.
+
+For the Render deployment, use `PUBLIC_BASE_URL=https://jineshwar-stone-impex.onrender.com`, `NODE_ENV=production`, `HOST=0.0.0.0`, and `TRUST_PROXY=1`. Gmail SMTP and persistent SQLite storage require a paid Render web service. Attach a persistent disk and point `DB_PATH` at the existing live database on that disk so the redeploy preserves registered customers. [Render Free service limitations](https://render.com/docs/free#other-limitations)
+
 Use a sender you control and a test recipient you can check. Set SMTP_HOST to the provider’s hostname. Port 465 normally uses SMTP_SECURE=true. Port 587 normally uses SMTP_SECURE=false and upgrades the connection using STARTTLS. Use the combination specified by your provider. Put the authorised SMTP username/password, SMTP_FROM and ADMIN_NOTIFY_EMAIL in the server’s .env, then restart Node.
 
 For an eligible Gmail account, use `smtp.gmail.com`, port 465 with immediate TLS, your full email address as SMTP_USER and an **app password** as SMTP_PASS. Google requires 2-Step Verification for app passwords; availability depends on account and organisation policy. A user's normal Google password is unsuitable here. Use an approved SMTP provider if app passwords are unavailable.

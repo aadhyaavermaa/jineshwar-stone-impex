@@ -29,7 +29,7 @@ test("upgrade preserves original IDs, credentials and tracking hashes, backs up 
       db.prepare("SELECT created_at FROM admins WHERE username='new-admin'").get().created_at,
       /\+05:30$/,
     );
-    assert.equal(db.prepare("PRAGMA user_version").get().user_version, 3);
+    assert.equal(db.prepare("PRAGMA user_version").get().user_version, 4);
     assert.equal(
       db.prepare("SELECT password_hash FROM admins WHERE id=4").get().password_hash,
       "existing-hash",
@@ -353,6 +353,57 @@ test("account, CRM and provider-enabled workflows", async (t) => {
       assert.equal((await a.call("user/enquiries/" + id)).data.quotations.length, 3);
     },
   );
+  await t.test("customer password reset emails a single-use link", async (resetTest) => {
+    const customer = actor();
+    const email = "reset@example.invalid";
+    await customer.call("auth/session");
+    assert.equal((await customer.call("auth/signup", "POST", { ...profile, email })).status, 201);
+    await customer.call("auth/logout", "POST");
+    await customer.call("auth/session");
+
+    const requestReset = (address) => customer.call("auth/forgot-password", "POST", { email: address });
+    assert.equal((await requestReset(email)).status, 503);
+    const messages = [];
+    resetTest.mock.method(require("nodemailer"), "createTransport", () => ({
+      sendMail: async (message) => messages.push(message),
+    }));
+    Object.assign(process.env, {
+      SMTP_HOST: "local-fixture",
+      SMTP_FROM: "studio@example.invalid",
+      PUBLIC_BASE_URL: "https://stone.example.invalid",
+    });
+    try {
+      const response = await requestReset(email.toUpperCase());
+      assert.equal(response.status, 200);
+      assert.deepEqual(await requestReset("missing@example.invalid"), response);
+      assert.equal(messages.length, 1);
+      assert.equal(messages[0].to, email);
+      const link = new URL(messages[0].text.match(/https:\/\/\S+/)[0]);
+      assert.equal(link.origin, process.env.PUBLIC_BASE_URL);
+      assert.equal(link.pathname, "/reset-password.html");
+      const token = new URLSearchParams(link.hash.slice(1)).get("token");
+      const password = crypto.randomBytes(14).toString("hex");
+      const payload = { token, password, confirm_password: password };
+      const stored = db.prepare("SELECT token_hash, expires_at FROM password_resets").get();
+      assert.equal(stored.token_hash, crypto.createHash("sha256").update(token).digest("hex"));
+      db.prepare("UPDATE password_resets SET expires_at=0 WHERE token_hash=?").run(stored.token_hash);
+      assert.equal((await customer.call("auth/reset-password", "POST", payload)).status, 400);
+      db.prepare("UPDATE password_resets SET expires_at=? WHERE token_hash=?").run(
+        stored.expires_at, stored.token_hash,
+      );
+      const attempts = await Promise.all([
+        customer.call("auth/reset-password", "POST", payload),
+        customer.call("auth/reset-password", "POST", payload),
+      ]);
+      assert.deepEqual(attempts.map(({ status }) => status).sort(), [200, 400]);
+      assert.equal((await customer.call("auth/login", "POST", { email, password: pw })).status, 401);
+      assert.equal((await customer.call("auth/login", "POST", { email, password })).status, 200);
+    } finally {
+      process.env.SMTP_HOST = "";
+      process.env.SMTP_FROM = "";
+      delete process.env.PUBLIC_BASE_URL;
+    }
+  });
   await t.test("SMTP disabled and failed transport both preserve submitted records", async () => {
     const mail = require("../services/mail"),
       nm = require("nodemailer");
